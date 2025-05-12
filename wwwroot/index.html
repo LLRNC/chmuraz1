@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogoda</title>
+</head>
+<body>
+    <h1>Sprawdź pogodę</h1>
+    <form id="weatherForm">
+        <label for="country">Kraj:</label>
+        <select id="country">
+            <option value="PL">Polska</option>
+            <option value="DE">Niemcy</option>
+            <option value="AT">Austria</option>
+            <option value="FR">Francja</option>
+            <option value="GB">Wielka Brytania</option>
+            <option value="ES">Hiszpania</option>
+            <option value="IT">Włochy</option>
+            <option value="CZ">Czechy</option>
+        </select>
+    
+        <label for="city">Miasto:</label>
+        <select id="city"></select>
+    
+        <button type="submit">Pobierz pogodę</button>
+    </form>
+    
+    <pre id="result"></pre>
+    
+    <script>
+        const cityOptions = {
+            PL: [
+                { value: "Warsaw", label: "Warszawa" },
+                { value: "Cracow", label: "Kraków" },
+                { value: "Gdansk", label: "Gdańsk" }
+            ],
+            DE: [
+                { value: "Berlin", label: "Berlin" },
+                { value: "Munich", label: "Monachium" },
+                { value: "Hamburg", label: "Hamburg" }
+            ],
+            AT: [
+                { value: "Vienna", label: "Wiedeń" },
+                { value: "Graz", label: "Graz" },
+                { value: "Innsbruck", label: "Innsbruck" }
+            ],
+            FR: [
+                { value: "Paris", label: "Paryż" },
+                { value: "Lyon", label: "Lyon" },
+                { value: "Marseille", label: "Marsylia" }
+            ],
+            GB: [
+                { value: "London", label: "Londyn" },
+                { value: "Manchester", label: "Manchester" },
+                { value: "Liverpool", label: "Liverpool" }
+            ],
+            ES: [
+                { value: "Madrid", label: "Madryt" },
+                { value: "Barcelona", label: "Barcelona" },
+                { value: "Valencia", label: "Walencja" }
+            ],
+            IT: [
+                { value: "Rome", label: "Rzym" },
+                { value: "Milan", label: "Mediolan" },
+                { value: "Naples", label: "Neapol" }
+            ],
+            CZ: [
+                { value: "Prague", label: "Praga" },
+                { value: "Brno", label: "Brno" },
+                { value: "Ostrava", label: "Ostrawa" }
+            ]
+        };
+    
+        const countrySelect = document.getElementById("country");
+        const citySelect = document.getElementById("city");
+    
+        function updateCityDropdown() {
+            const selectedCountry = countrySelect.value;
+            const cities = cityOptions[selectedCountry] || [];
+    
+            citySelect.innerHTML = "";
+            cities.forEach(city => {
+                const opt = document.createElement("option");
+                opt.value = city.value;
+                opt.textContent = city.label;
+                citySelect.appendChild(opt);
+            });
+        }
+    
+        countrySelect.addEventListener("change", updateCityDropdown);
+        updateCityDropdown();
+    
+        document.getElementById("weatherForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const country = countrySelect.value;
+            const city = citySelect.value;
+    
+            const res = await fetch(`/weather?city=${city}&country=${country}`);
+            const data = await res.json();
+            document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
+    
+</body>
+</html>

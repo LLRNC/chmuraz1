@@ -1,0 +1,10 @@
+services:
+  chmura-z1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - OWM_API_KEY=510bc83aafa91e88b33fdc853429fa4a
+    restart: unless-stopped

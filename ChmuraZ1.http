@@ -1,0 +1,6 @@
+@ChmuraZ1_HostAddress = http://localhost:5110
+
+GET {{ChmuraZ1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
