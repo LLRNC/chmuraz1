@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChmuraZ1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c31b612c1c6a1ad080ed0ae1c220026705254134")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74b261889f2e0ed35118f480d83a39bfe836ea79")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChmuraZ1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChmuraZ1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
