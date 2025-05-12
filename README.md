@@ -51,8 +51,7 @@ Zbudowane w czystym HTML + JavaScript (bez frameworków)
 - ✅ Healthcheck – `docker inspect` pokazujący `"Status": "healthy"`
   ![Healthcheck](screens/health.png)
 
-- ✅ Widok logów (`docker logs <container_id>`)
-  ![Logs](screens/logs.png)
+
 
 ## 🔗 Linki
 
